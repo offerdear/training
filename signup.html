@@ -1,0 +1,153 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started</title>
+ <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Inter+Tight&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <!-- Your Styles -->
+  <link rel="stylesheet" href="styles/style.css" />
+
+  <style>
+    .email-link {
+      color: rgba(10, 25, 47, 0.9) !important;
+      transition: color 0.3s ease;
+    }
+
+    .email-link:hover {
+      color: #78f7da !important;
+    }
+  </style>
+</head>
+<script>
+  // Get current page filename (e.g., "index.html", "session.html")
+  const currentPage = window.location.pathname.split("/").pop();
+
+  // Get all nav links
+  const navLinks = document.querySelectorAll(".nav-menu a");
+
+  navLinks.forEach(link => {
+    // Match the href to the current page
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+</script>
+<body>
+  </section>
+    <!-- Navigation bar -->
+  <nav class="nav">
+<!-- Container for logos in nav -->
+  <div class="nav-logos">
+  <!-- Wrap Offerdeer logo in a link -->
+   <img src="images/offerdeer_logo.svg" alt="Offerdeer Logo" class="logo offerdeer-logo"/>
+    <p class="collaboration-x">x</p>
+    <img src="images/beshton_white_text_transparent_bg.png" alt="Beshton Software Logo" class="logo beshton-logo"/>
+</div>
+<!-- Navigation menu items -->
+    <div class="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="session.html">2025 Programs</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="signup.html" class="get-started-link">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <h1 style="font-size: 3rem; text-align: center; margin-top: -.3rem; margin-bottom: 2.5rem; font-weight: 700;">
+      Get Started
+    </h1>
+  <div style="display: flex; justify-content: center; align-items: flex-start; gap: 30px; max-width: 1200px; margin: -40px auto 0 auto; padding: 20px;">
+  <!-- Left text box -->
+  <div style="flex: 0 0 500px; text-align: left; margin-left: -30px; margin-right: 10px;">
+  <p style="font-size: 1.2rem; color: #4a4a4a; line-height: 1.6;">
+    If you're interested in the program, fill out our <span style="color: #6c63ff;">intake form</span> below! We'll get in touch with you within a day with details about enrollment, scheduling, and next steps.
+  </p>
+  <br>
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLSegJG58_QgRlKFRzKWFIj6d4aiNsG5bS0_X1vr1kd1wx7S9rA/viewform?embedded=true" 
+    width="640" height="1977" frameborder="0" marginheight="0" marginwidth="0">Loading…
+  </iframe>
+  
+</div>
+<!-- Right-of-center iframe -->
+<div style="margin-left: 20px;">
+  <p style="font-size: 1.2rem; color: #4a4a4a; line-height: 1.6; margin-top: 8px;">
+    If you still have questions or concerns, or would just like to know more, feel free to <span style="color: teal;">contact us</span> using any of the options below. We'd love to hear from you!
+  </p>
+  <br>
+  <div style="font-family: Inter, sans-serif; color: #0f868c; font-size: 1.2rem; line-height: 2;">
+  
+    <!-- Email -->
+  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 2px;">
+    <svg width="24" height="24" fill="none" stroke="#30b3ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top: -80px;">
+      <path d="M4 4h16v16H4z" fill="none"/>
+      <path d="M4 4l8 8 8-8" />
+    </svg>
+    <div>
+      <p style="font-size: 1.4rem; color: teal; margin-left: 4px; margin-bottom: 2px; font-family: 'DM Sans', sans-serif;">
+  Email us: 
+  <a href="mailto:info@offerdeer.com" class="email-link" style="font-family: 'Inter Tight', sans-serif; font-size: 1.5rem; text-decoration: none;">
+    info@offerdeer.com
+</a><br><span style="padding-left: 96px;">
+  <a href="mailto:info@beshton.com" class="email-link" style="font-family: 'Inter Tight', sans-serif; font-size: 1.5rem; text-decoration: none;">
+    info@beshton.com
+</a></span>
+</p>
+    <p style="margin-top: 0px; margin-left: 0.3px;">Both emails reach our joint program team.</p>
+    </div>
+  </div>
+
+  <!-- Text/Call -->
+  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 3px;">
+    <svg width="24" height="24" fill="none" stroke="#30b3ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3.1 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.2 1.38.73 2.7 1.57 3.86a2 2 0 0 1-.45 2.6l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.6-.45 11.05 11.05 0 0 0 3.86 1.57A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    <div>
+      <p style="font-size: 1.4rem; color: teal; margin-bottom: 3px; margin-top: 0px; font-family: 'DM Sans', sans-serif;">
+  Text or Call us: 
+  <span style="font-family: 'Inter Tight', sans-serif; color: #121215; font-size: 1.5rem;">
+    (408)-690-7462
+  </span>
+</p>
+    </div>
+  </div>
+
+ <!-- WeChat section -->
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 15px;">
+
+  <!-- Top row: icon + label -->
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="#30b3ba" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 5.92 2 10.5c0 2.4 1.28 4.54 3.29 6.03L4 22l4.26-2.24c1.03.3 2.14.47 3.29.47 5.52 0 10-3.92 10-8.5S17.52 2 12 2zm-3 7c-.83 0-1.5-.67-1.5-1.5S8.17 6 9 6s1.5.67 1.5 1.5S9.83 9 9 9zm6 0c-.83 0-1.5-.67-1.5-1.5S14.17 6 15 6s1.5.67 1.5 1.5S15.83 9 15 9z"/>
+    </svg>
+    <p style="font-size: 1.4rem; color: teal; font-family: 'DM Sans', sans-serif; margin: 0;">
+      Scan our WeChat:
+    </p>
+  </div>
+
+  <!-- Second row: QR codes -->
+  <div style="display: flex; gap: 20px; margin-top: 10px; margin-left: 40px;">
+    <div style="padding: 8px; background: white; border-radius: 6px; border: 1.5px solid #30b3ba;">
+      <img src="images/offerdeer_wechat_contact.jpeg" alt="WeChat QR Code 1" style="width: 150px; height: 150px; display: block;">
+    </div>
+    <div style="padding: 8px; background: white; border-radius: 6px; border: 1.5px solid #30b3ba;">
+      <img src="images/offerdeer_wechat.jpg" alt="WeChat QR Code 2" style="width: 150px; height: 150px; display: block;">
+    </div>
+  </div>
+
+</div>
+  
+</div>
+</div>
+</div>
+</body>
+</html>

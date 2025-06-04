@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - Lu Duoxi×Beshton Tech Bootcamp</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- Your Styles -->
+  <link rel="stylesheet" href="styles/style.css" />
+
+  <!-- FAQ-specific styles -->
+  <style>
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 2px solid transparent;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-item:hover {
+      border-color: #3bae93;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59, 174, 147, 0.15);
+    }
+
+    .faq-question {
+      background: linear-gradient(135deg, #d3f9f9, #eff1f6);
+      color: rgba(10, 25, 47, 0.9);
+      padding: 25px 30px;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: linear-gradient(135deg, #f2dffd, #afe3ec);
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: #38d9d3;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 30px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    h3.section-title {
+  margin-top: 10px;
+}
+
+    .faq-item.active .faq-answer {
+      padding: 25px 30px;
+      max-height: 500px;
+    }
+
+    .faq-answer p {
+      margin: 0 0 15px 0;
+      color: #4a4a4a;
+      line-height: 1.7;
+    }
+
+    .faq-answer p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-text {
+      color: #13c198;
+      font-weight: 600;
+    }
+
+    .emphasis {
+      background: linear-gradient(120deg, rgba(108, 99, 255, 0.1) 0%, rgba(100, 255, 218, 0.1) 100%);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .faq-question {
+        padding: 20px 25px;
+        font-size: 1rem;
+      }
+      
+      .faq-question::after {
+        right: 25px;
+      }
+    }
+
+    .coming-soon-text {
+    color: rgb(2, 166, 166);  /* Purple for "Coming soon!" */
+    font-weight: 600; /* Optional: make it slightly bolder */
+}
+  </style>
+</head>
+
+<script>
+  // Get current page filename (e.g., "index.html", "session.html")
+  const currentPage = window.location.pathname.split("/").pop();
+
+  // Get all nav links
+  const navLinks = document.querySelectorAll(".nav-menu a");
+
+  navLinks.forEach(link => {
+    // Match the href to the current page
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+</script>
+
+<body>
+  <!-- Navigation bar -->
+  <nav class="nav">
+<!-- Container for logos in nav -->
+  <div class="nav-logos">
+  <!-- Wrap Offerdeer logo in a link -->
+   <img src="images/offerdeer_logo.svg" alt="Offerdeer Logo" class="logo offerdeer-logo"/>
+    <p class="collaboration-x">x</p>
+    <img src="images/beshton_white_text_transparent_bg.png" alt="Beshton Software Logo" class="logo beshton-logo"/>
+</div>
+<!-- Navigation menu items -->
+    <div class="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="session.html">2025 Programs</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="signup.html" class="get-started-link">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <br><br>
+
+  <div class="container">
+    <h3 class="section-title">Frequently Asked Questions</h3>
+    
+    <div class="faq-container">
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Do I need prior programming experience to join the bootcamp?
+        </div>
+        <div class="faq-answer">
+          <p>No prior experience is required! Our program is designed to take you <span class="highlight-text">from zero to industry-ready</span>. We start with fundamentals and build up to advanced concepts progressively.</p>
+          <p>However, having basic familiarity with computers and a strong willingness to learn will help you succeed faster.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How intensive is the 4-week program? Can I work while attending?
+        </div>
+        <div class="faq-answer">
+          <p>This is an <span class="emphasis">intensive, project-driven bootcamp</span> requiring 40+ hours per week of commitment. Most successful students treat this as their primary focus during the 4 weeks.</p>
+          <p>While some students manage part-time work, we recommend clearing your schedule as much as possible to maximize your learning and project outcomes.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          What makes this bootcamp different from online courses or tutorials?
+        </div>
+        <div class="faq-answer">
+          <p>Unlike passive learning, you'll build <span class="highlight-text">real enterprise-level projects</span> that impress employers and admissions committees.</p>
+          <p>You also get:</p>
+          <p>• <span class="emphasis">1:1 mentorship</span> from Silicon Valley engineers<br>
+          • <span class="emphasis">Personalized recommendation letters</span><br>
+          • <span class="emphasis">Algorithm training</span> and LeetCode preparation<br>
+          • <span class="emphasis">Career support</span> and referral opportunities</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Which track should I choose if I'm unsure about my career direction?
+        </div>
+        <div class="faq-answer">
+          <p>Consider your interests and career goals:</p>
+          <p>• <span class="highlight-text">Java/Spring Backend</span> - Great for traditional software engineering roles<br>
+          • <span class="highlight-text">Data Science/AI & LLM</span> - Perfect for AI/ML careers and research<br>
+          • <span class="highlight-text">DevOps & Microservices</span> - Ideal for modern cloud architecture roles</p>
+          <p>We offer pre-program consultations to help you choose the best fit for your goals.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          What kind of projects will I build during the bootcamp?
+        </div>
+        <div class="faq-answer">
+          <p>You'll create <span class="emphasis">portfolio-worthy projects</span> that demonstrate real-world skills:</p>
+          <p>• Full-stack web applications with modern frameworks<br>
+          • AI-powered applications using cutting-edge LLM technology<br>
+          • Microservices architectures deployed on cloud platforms<br>
+          • Open-source contributions to established projects</p>
+          <p>All projects are designed to be <span class="highlight-text">impressive to HR teams and admissions officers</span>.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How does the 1:1 mentorship work?
+        </div>
+        <div class="faq-answer">
+          <p>Each student is paired with a <span class="highlight-text">Silicon Valley engineer mentor</span> who provides:</p>
+          <p>• Weekly 1-hour video sessions for guidance and code review<br>
+          • Daily availability via Slack for quick questions<br>
+          • Career advice and industry insights<br>
+          • Personalized recommendation letter upon completion</p>
+          <p>Your mentor stays with you throughout the entire 4-week journey.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          What happens after I complete the bootcamp?
+        </div>
+        <div class="faq-answer">
+          <p>Upon successful completion, you receive:</p>
+          <p>• <span class="emphasis">Completed portfolio projects</span> ready for job applications<br>
+          • <span class="emphasis">Personalized recommendation letter</span> from your mentor<br>
+          • <span class="emphasis">Technical assessment report</span> highlighting your strengths<br>
+          • <span class="emphasis">Referral opportunities</span> to partner companies<br>
+          • <span class="emphasis">Alumni network access</span> for continued support</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Is there any guarantee I'll get an internship or job after the program?
+        </div>
+        <div class="faq-answer">
+          <p>While we cannot guarantee specific outcomes, our program is designed to <span class="highlight-text">maximize your competitiveness</span>:</p>
+          <p>• 90%+ of graduates report feeling significantly more confident in technical interviews<br>
+          • Students typically see 3-5x more interview callbacks after completing projects<br>
+          • Our recommendation letters have helped students secure positions at top-tier companies</p>
+          <p>Your success depends on your dedication and effort during the program.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          What are the technical requirements to participate?
+        </div>
+        <div class="faq-answer">
+          <p>You'll need:</p>
+          <p>• A laptop/computer capable of running development tools<br>
+          • Stable internet connection for video calls and collaboration<br>
+          • Willingness to install necessary software (we'll guide you through setup)<br>
+          • GitHub account for project collaboration</p>
+          <p>We provide detailed setup instructions and technical support throughout the program.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <br><br id="testimonials"><br><br><br><br>
+  <div class="container" style="margin-top: 20px;">
+    <h3 class="section-title" >Testimonials</h3>
+
+        <div class="session-grid-horizontal coming-soon-content" style="text-align: center; padding: 20px; font-size: 1.2rem; font-weight: 500;">
+        <p><span class="coming-soon-text" >Coming very soon!</span> 
+          Updates from students who landed great offers after attending our program. <br>
+          Our mentors don't just teach, they connect you to real opportunities.</div>
+        <br>
+  </div>
+
+  <!-- Page footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Us</h4>
+        <p>
+          Lu Duoxi×Beshton Tech Bootcamp provides industry-leading tech education
+          to help students accelerate their careers.
+        </p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#program-summary">Program Overview</a></li>
+          <li><a href="program-details.html">Full Program Details</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <ul>
+          <li>Email: info@offerdoer.com</li>
+          <li>Phone: (123) 456-7890</li>
+          <li>Address: Sunnyvale, CA</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Questions? Interested in our mission? Leave us a message.</p>
+        <form>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            style="
+              padding: 10px;
+              width: 100%;
+              margin-top: 10px;
+              background: transparent;
+              border: 1px solid #64ffda;
+              color: #E6F1FF;
+              border-radius: 5px;
+            "
+          />
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 Lu Duoxi×Beshton Tech Bootcamp. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // Toggle current item
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

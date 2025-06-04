@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sessions - Lu Duoxi×Beshton Tech Bootcamp</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  
+  <!-- Your Styles -->
+  <link rel="stylesheet" href="styles/style.css" />
+  
+  <style>
+    /* Additional styles specific to sessions page */
+  
+
+    /* for headers on this page specifically*/
+    .sessions-title {
+    margin-left: 80px;  /* or whatever positioning you want */
+}
+.session-hero {
+            background: linear-gradient(135deg, #f9f9f9 0%, #e8f4f0 100%);
+            padding: 6rem 3rem 3rem;
+            text-align: center;
+}
+        
+        .session-hero h1 {
+            color: #0A192F;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .session-hero  p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 60px; /* Increased spacing below text */
+            color: #4a4a4a;
+        }
+
+.course-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.course-section {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.section-header {
+    background-color: #344a6e;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    border: 1px solid #5049c3;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    flex-direction: column;  /* Stack items vertically instead of horizontally */
+    align-items: flex-start; /* Align to left instead of center */
+    padding: 25px 30px;     /* Increase from 20px to 25px for more height */
+}
+
+.header-main-text {
+    font-size: 1.3em;       /* Keep main text size */
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    color: white;
+}
+
+.header-date-text {
+    font-size: 0.9em;       /* Smaller text for dates */
+    font-weight: 400;       /* Lighter weight */
+    margin-top: 5px;        /* Small gap between lines */
+    opacity: 0.8;           /* Slightly faded */
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.section-header:hover {
+    background: linear-gradient(135deg, #5a52d5 0%, #11a085 100%);
+    transform: translateY(-2px);
+}
+
+.section-header::after {
+  content: '+';
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.course-section.active .section-header::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background: #fafafa;
+    padding: 0 30px;
+}
+
+.course-section.active .section-content {
+  padding: 25px 30px;
+  max-height: 3000px;
+}
+
+.section-content.active {
+    max-height: 3000px !important;
+    padding: 25px 30px !important;
+    transition: max-height 0.6s ease-in;
+}
+
+        .session-grid-horizontal {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .session-card-horizontal {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column; /* Override to column for new layout */
+            gap: 20px;
+        }
+        
+        .session-card-horizontal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #6c63ff, #13c198);
+        }
+        
+        .session-card-horizontal:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: #6c63ff;
+        }
+        
+        .session-card-horizontal .session-header {
+            display: flex;
+            align-items: center; /* Keep horizontal alignment */
+            margin-bottom: 0;
+            min-width: auto; /* Override existing min-width */
+            flex-shrink: 0;
+        }
+        
+        .session-card-horizontal .session-info {
+            margin-left: 15px; /* Keep existing margin for title */
+            margin-top: 0;
+        }
+
+        .coming-soon-content {
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;        /* Adjust size as needed */
+    font-weight: 500;         /* Options: 300, 400, 500, 600, 700, 800 */     /* Optional: match your theme colors */
+}
+
+.coming-soon-text {
+    color: #6c63ff;  /* Purple for "Coming soon!" */
+    font-weight: 600; /* Optional: make it slightly bolder */
+}
+        
+        .session-number {
+            background: linear-gradient(45deg, #6c63ff, #13c198);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        .session-title {
+            color: #0A192F;
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .session-theme {
+            background: rgba(108, 99, 255, 0.1);
+            color: #6c63ff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        /* New styles for the two-column content layout */
+        .session-body {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .content-left {
+            flex: 1;
+        }
+        
+        .content-right {
+            flex: 1;
+        }
+        
+        .session-content h4 {
+            color: #1e9277;
+            margin: 10px 0 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        .session-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .session-content li {
+            padding: 3px 0 5px 20px;
+            position: relative;
+            color: #4a4a4a;
+            line-height: 1.5;
+        }
+        
+        .session-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #13c198;
+            font-weight: bold;
+        }
+        
+        .homework-section {
+            background: rgba(19, 193, 152, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 0; /* Remove top margin since it's now in right column */
+            border-left: 4px solid #13c198;
+        }
+      
+        /* Background SVG Container - positioned behind dates banner only - FIXED */
+        .dates-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+            /* Temporary: Make SVG more visible for testing */
+            opacity: 0.8;
+        }
+
+        .dates-banner {
+            background: white;
+            padding: 20px 20px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 1075px;
+            border: 2px solid #261fa4;
+            position: relative;
+            z-index: 10;
+            margin: 0 auto;
+            transform: translateY(-15px);
+        }
+
+        .track-link {
+            color: #43bfa4;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .track-link:hover {
+            color: #78f7da;
+        }
+
+        .dates-banner h3 {
+            color: #4a45b4;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+
+        .date-item {
+            background: #f8f8fe;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #6c63ff;
+        }
+
+        .date-item h4 {
+            color: #6c63ff;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-align: left;
+        }
+
+        .date-item p {
+            margin: 5px 0;
+            color: black;
+            text-align: left;
+
+        }
+
+        /* Animated elements */
+        .floating-element {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(2) {
+            animation-delay: -2s;
+        }
+
+        .floating-element:nth-child(3) {
+            animation-delay: -4s;
+        }
+
+        .floating-element:nth-child(4) {
+            animation-delay: -6s;
+        }
+
+        .circuit-path {
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: drawPath 6s ease-in-out infinite;
+        }
+
+        .pulse-dot {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .pulse-dot:nth-child(odd) {
+            animation-delay: -1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); opacity: 0.7; }
+            50% { transform: translateY(-15px); opacity: 1; }
+        }
+
+        @keyframes drawPath {
+            0%, 100% { stroke-dashoffset: 300; }
+            50% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        @media (max-width: 768px) {
+            .session-hero {
+                padding: 2rem 1rem 3rem;
+            }
+            
+            .session-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .dates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+      #course-details {
+    scroll-margin-top: 90px;
+}
+
+    /* Styles for the unique program section */
+.unique-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.unique-section-title {
+    color: #1e9277;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.unique-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, #3bae93, transparent);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.unique-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.unique-feature {
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    border: 2px solid #1e9277;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    min-height: 200px;
+}
+
+.unique-feature:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(30, 146, 119, 0.15);
+    border-color: #3bae93;
+}
+
+.feature-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.feature-icon svg {
+    width: 60px;
+    height: 60px;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-title {
+    color: #261fa4;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.feature-description {
+    color: #4a4a4a;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.unique-section .cta-container {
+    text-align: center;
+}
+
+.unique-section .cta-button {
+    display: inline-block;
+}
+
+.highlight-text {
+    color: #1e9277;
+    font-weight: 600;
+}
+
+.emphasis {
+    color: #6c63ff;
+    font-weight: 600;
+}
+
+
+.instructor-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .section-title {
+            color: #1e9277;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #1e9277, transparent);
+        }
+
+        .instructors-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .instructor-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .instructor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #6c63ff, #1e9277);
+        }
+
+        .instructor-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            border-color: #1e9277;
+        }
+
+        .instructor-header {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f8f6 100%);
+            gap: 20px;
+        }
+
+        .photo-wrapper {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-top: 20px;
+}
+
+.instructor-photo {
+    width: 120%;  /* Make image bigger than the circle */
+    height: 120%; /* Make image bigger than the circle */
+    object-fit: cover;
+    object-position: center;
+    margin: -10% 0 0 -10%; /* Pull it back to center */
+}
+
+        .instructor-basic-info {
+            flex: 1;
+        }
+
+        .instructor-name {
+            color: #0A192F;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 15px 0 0 0;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .instructor-content {
+            padding: 0 20px 20px;
+        }
+
+        .content-section {
+            margin-bottom: 0px;
+        }
+
+        .content-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-heading {
+            color: #0A192F;
+            font-size: 1.2rem;
+            font-weight: 700;
+            /*margin: 0 0 10px 0;*/
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-heading::before {
+            content: '';
+            width: 3px;
+            height: 16px;
+            background: linear-gradient(45deg, #6c63ff, #1e9277);
+            border-radius: 2px;
+        }
+
+        .content-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .content-list li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            color: #4a4a4a;
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+
+        .content-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #1e9277;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .bootcamp-description {
+            background: rgba(30, 146, 119, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid #1e9277;
+            margin-top: 15px;
+        }
+
+        .bootcamp-description p {
+            margin: 0 0 12px 0;
+            color: #4a4a4a;
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+
+        .bootcamp-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-text {
+            color: #1e9277;
+            font-weight: 600;
+        }
+
+        .emphasis {
+            color: #6c63ff;
+            font-weight: 600;
+        }
+
+        .workflow-text {
+            font-family: 'Space Grotesk', monospace;
+            font-weight: 600;
+            color: #0A192F;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .instructors-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .instructor-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+
+            .instructor-photo {
+                width: 75px;
+                height: 75px;
+            }
+
+            .instructor-name {
+                font-size: 1.4rem;
+            }
+
+            .instructor-content {
+                padding: 0 20px 25px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            #instructors {
+  scroll-margin-top: 90px;
+}
+        }
+
+
+      
+</style>
+</head>
+
+<body>
+  <!-- Navigation bar -->
+  <nav class="nav">
+<!-- Container for logos in nav -->
+  <div class="nav-logos">
+  <!-- Wrap Offerdeer logo in a link -->
+   <img src="images/offerdeer_logo.svg" alt="Offerdeer Logo" class="logo offerdeer-logo"/>
+    <p class="collaboration-x">x</p>
+    <img src="images/beshton_white_text_transparent_bg.png" alt="Beshton Software Logo" class="logo beshton-logo"/>
+</div>
+<!-- Navigation menu items -->
+    <div class="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="session.html">2025 Programs</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="signup.html" class="get-started-link">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Program Dates -->
+    <section class="session-hero">
+        <h1>4-Week Intensive Training Program</h1>
+        <p>From inexperienced to industry-ready in just 4 weeks. Master modern development practices, cloud technologies, and gain experience that will impress employers.</p>
+        
+        <div class="dates-section">
+            <!-- Background SVG Container - only behind dates section -->
+            <div class="dates-bg-container">
+                <svg width="100%" height="100%" viewBox="0 0 1400 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Enhanced Colorful Background -->
+                    <defs>
+                        <radialGradient id="leftGradient1" cx="50%" cy="50%" r="70%">
+                            <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:0.9"/>
+                            <stop offset="30%" style="stop-color:#261fa4;stop-opacity:0.8"/>
+                            <stop offset="70%" style="stop-color:#64ffda;stop-opacity:0.6"/>
+                            <stop offset="100%" style="stop-color:#13c198;stop-opacity:0.4"/>
+                        </radialGradient>
+                        <radialGradient id="leftGradient2" cx="50%" cy="50%" r="60%">
+                            <stop offset="0%" style="stop-color:#13c198;stop-opacity:0.8"/>
+                            <stop offset="50%" style="stop-color:#64ffda;stop-opacity:0.6"/>
+                            <stop offset="100%" style="stop-color:#6c63ff;stop-opacity:0.3"/>
+                        </radialGradient>
+                        <radialGradient id="rightGradient1" cx="50%" cy="50%" r="70%">
+                            <stop offset="0%" style="stop-color:#64ffda;stop-opacity:0.9"/>
+                            <stop offset="30%" style="stop-color:#6c63ff;stop-opacity:0.8"/>
+                            <stop offset="70%" style="stop-color:#261fa4;stop-opacity:0.6"/>
+                            <stop offset="100%" style="stop-color:#13c198;stop-opacity:0.4"/>
+                        </radialGradient>
+                        <radialGradient id="rightGradient2" cx="50%" cy="50%" r="65%">
+                            <stop offset="0%" style="stop-color:#261fa4;stop-opacity:0.8"/>
+                            <stop offset="50%" style="stop-color:#13c198;stop-opacity:0.6"/>
+                            <stop offset="100%" style="stop-color:#64ffda;stop-opacity:0.3"/>
+                        </radialGradient>
+                        <linearGradient id="leftLinear" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:0.7"/>
+                            <stop offset="50%" style="stop-color:#64ffda;stop-opacity:0.8"/>
+                            <stop offset="100%" style="stop-color:#13c198;stop-opacity:0.6"/>
+                        </linearGradient>
+                        <linearGradient id="rightLinear" x1="100%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#64ffda;stop-opacity:0.7"/>
+                            <stop offset="50%" style="stop-color:#261fa4;stop-opacity:0.8"/>
+                            <stop offset="100%" style="stop-color:#6c63ff;stop-opacity:0.6"/>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Left Side Large Colorful Shapes - MOVED BACK UP -->
+                    <g class="floating-element">
+                        <ellipse cx="260" cy="330" rx="160" ry="120" fill="url(#leftGradient1)"/>
+                    </g>
+                    <g class="floating-element">
+                        <ellipse cx="200" cy="380" rx="140" ry="100" fill="url(#leftGradient2)"/>
+                    </g>
+                    <g class="floating-element">
+                        <rect x="100" y="270" width="200" height="180" rx="20" fill="url(#leftLinear)" opacity="0.6"/>
+                    </g>
+                    
+                    <!-- Right Side Large Colorful Shapes - MOVED BACK UP -->
+                    <g class="floating-element">
+                        <ellipse cx="1140" cy="330" rx="160" ry="120" fill="url(#rightGradient1)"/>
+                    </g>
+                    <g class="floating-element">
+                        <ellipse cx="1200" cy="380" rx="140" ry="100" fill="url(#rightGradient2)"/>
+                    </g>
+                    <g class="floating-element">
+                        <rect x="1100" y="270" width="200" height="180" rx="20" fill="url(#rightLinear)" opacity="0.6"/>
+                    </g>
+                    
+                    <!-- Additional Bright Color Blobs - MOVED BACK UP -->
+                    <circle cx="160" cy="250" r="40" fill="#6c63ff" opacity="0.7"/>
+                    <circle cx="1240" cy="250" r="40" fill="#64ffda" opacity="0.7"/>
+                    <circle cx="140" cy="380" r="35" fill="#13c198" opacity="0.8"/>
+                    <circle cx="1260" cy="380" r="35" fill="#261fa4" opacity="0.8"/>
+                    
+                    <!-- Left Side Tech Elements - MOVED BACK UP -->
+                    <g opacity="0.8">
+                        <!-- Code Brackets -->
+                        <path d="M140 290 L120 310 L140 330" stroke="#64ffda" stroke-width="4" fill="none"/>
+                        <path d="M140 375 L120 380 L140 380" stroke="#13c198" stroke-width="3" fill="none"/>
+                        
+                        <!-- Circuit Nodes -->
+                        <circle class="pulse-dot" cx="200" cy="270" r="5" fill="#6c63ff"/>
+                        <circle class="pulse-dot" cx="260" cy="290" r="4" fill="#64ffda"/>
+                        <circle class="pulse-dot" cx="170" cy="350" r="6" fill="#13c198"/>
+                        <circle class="pulse-dot" cx="240" cy="380" r="4" fill="#261fa4"/>
+                        
+                        <!-- Floating Code Blocks -->
+                        <rect x="120" y="250" width="60" height="8" rx="2" fill="#6c63ff" opacity="0.9"/>
+                        <rect x="120" y="262" width="45" height="6" rx="2" fill="#64ffda" opacity="0.8"/>
+                        <rect x="120" y="380" width="70" height="10" rx="2" fill="#261fa4" opacity="0.9"/>
+                        <rect x="120" y="380" width="50" height="5" rx="2" fill="#13c198" opacity="0.8"/>
+                    </g>
+                    
+                    <!-- Right Side Tech Elements - MOVED BACK UP -->
+                    <g opacity="0.8">
+                        <!-- Code Brackets -->
+                        <path d="M1260 250 L1280 270 L1260 290" stroke="#64ffda" stroke-width="4" fill="none"/>
+                        <path d="M1260 350 L1280 370 L1260 375" stroke="#13c198" stroke-width="3" fill="none"/>
+                        
+                        <!-- Circuit Nodes -->
+                        <circle class="pulse-dot" cx="1200" cy="230" r="5" fill="#6c63ff"/>
+                        <circle class="pulse-dot" cx="1140" cy="250" r="4" fill="#64ffda"/>
+                        <circle class="pulse-dot" cx="1230" cy="310" r="6" fill="#13c198"/>
+                        <circle class="pulse-dot" cx="1160" cy="375" r="4" fill="#261fa4"/>
+                        
+                        <!-- Floating Code Blocks -->
+                        <rect x="1220" y="210" width="60" height="8" rx="2" fill="#6c63ff" opacity="0.9"/>
+                        <rect x="1235" y="222" width="45" height="6" rx="2" fill="#64ffda" opacity="0.8"/>
+                        <rect x="1210" y="375" width="70" height="10" rx="2" fill="#261fa4" opacity="0.9"/>
+                        <rect x="1230" y="375" width="50" height="5" rx="2" fill="#13c198" opacity="0.8"/>
+                    </g>
+                    
+                    <!-- Subtle Circuit Paths - MOVED BACK UP -->
+                    <g opacity="0.6">
+                        <path class="circuit-path" d="M180 270 Q220 250 260 270" stroke="#64ffda" stroke-width="2" fill="none"/>
+                        <path class="circuit-path" d="M200 375 Q240 355 280 375" stroke="#6c63ff" stroke-width="2" fill="none"/>
+                        <path class="circuit-path" d="M1220 270 Q1180 250 1140 270" stroke="#64ffda" stroke-width="2" fill="none"/>
+                        <path class="circuit-path" d="M1200 375 Q1160 355 1120 375" stroke="#6c63ff" stroke-width="2" fill="none"/>
+                    </g>
+                    
+                    <!-- Binary Code Strings - MOVED BACK UP -->
+                    <g opacity="0.4" font-family="monospace" font-size="12">
+                        <text x="130" y="190" fill="#64ffda">10110101</text>
+                        <text x="150" y="375" fill="#6c63ff">01101011</text>
+                        <text x="1180" y="190" fill="#64ffda">11010110</text>
+                        <text x="1200" y="375" fill="#6c63ff">10101101</text>
+                    </g>
+                </svg>
+            </div>
+
+            <br>
+
+            <div class="dates-banner">
+                <h3>Available Program Dates</h3>
+                <div class="dates-grid">
+                    <div class="date-item">
+                        <p>June 2nd - June 27th</p>
+                        <h4>Java/Spring Backend</h4>
+                        <a href="#course-details" class="track-link">View Session Details →</a>
+                    </div>
+                    <div class="date-item">
+                        <p>July 7th - August 1st</p>
+                        <h4>Data Science/AI & LLM</h4>
+                        <a href="#course-details" class="track-link">View Session Details →</a>
+                    </div>
+                    <div class="date-item">
+                        <p>August 4th - August 29th</p>
+                        <h4>DevOps & Microservices</h4>
+                        <a href="#course-details" class="track-link">View Session Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  </section>
+  
+<!-- What Makes This Program Unique Section -->
+<section class="unique-section">
+    <h2 class="section-title unique-section-title">What Makes This Program Unique?</h2>
+    <p class="section-subtitle">
+        Unlike traditional bootcamps or online courses, our program bridges the gap between learning and landing your dream role in today's competitive tech market.
+    </p>
+
+    <div class="unique-features-grid">
+        <div class="unique-feature">
+            <div class="feature-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="20" width="80" height="60" rx="5" fill="#1e9277" stroke="#1e9277" stroke-width="2"/>
+                    <rect x="20" y="30" width="60" height="8" fill="white"/>
+                    <rect x="20" y="42" width="35" height="4" fill="white"/>
+                    <rect x="20" y="50" width="45" height="4" fill="white"/>
+                    <rect x="20" y="58" width="30" height="4" fill="white"/>
+                    <rect x="20" y="66" width="40" height="4" fill="white"/>
+                    <circle cx="75" cy="50" r="8" fill="white"/>
+                    <path d="M71 50 L74 53 L79 47" stroke="#1e9277" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">Enterprise-Level Project Experience</h3>
+                <p class="feature-description">
+                    Build <span class="highlight-text">production-ready applications</span> using real enterprise architectures and industry best practices. Your portfolio will showcase projects that <span class="emphasis">mirror actual workplace environments</span>, not just tutorial-level demos.
+                </p>
+            </div>
+        </div>
+
+        <div class="unique-feature">
+            <div class="feature-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="30" r="15" fill="#6c63ff"/>
+                    <path d="M50 45 Q35 50 35 65 L35 85 L65 85 L65 65 Q65 50 50 45" fill="#6c63ff"/>
+                    <rect x="40" y="55" width="20" height="3" fill="white"/>
+                    <rect x="40" y="60" width="20" height="3" fill="white"/>
+                    <rect x="40" y="65" width="15" height="3" fill="white"/>
+                    <circle cx="50" cy="30" r="10" fill="white"/>
+                    <circle cx="50" cy="30" r="5" fill="#6c63ff"/>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">Silicon Valley Mentor Partnership</h3>
+                <p class="feature-description">
+                    Work 1:1 with <span class="highlight-text">active Silicon Valley engineers</span> who provide personalized guidance, code reviews, and career insights. Get a <span class="emphasis">professional recommendation letter</span> that carries real weight with hiring teams.
+                </p>
+            </div>
+        </div>
+
+        <div class="unique-feature">
+            <div class="feature-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#1e9277" stroke-width="4"/>
+                    <circle cx="50" cy="50" r="25" fill="none" stroke="#1e9277" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="15" fill="none" stroke="#1e9277" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="5" fill="#1e9277"/>
+                    <path d="M50 15 L55 25 L50 35" fill="#1e9277"/>
+                    <path d="M85 50 L75 45 L65 50 L75 55 Z" fill="#1e9277"/>
+                    <path d="M50 85 L45 75 L50 65" fill="#1e9277"/>
+                    <path d="M15 50 L25 55 L35 50 L25 45 Z" fill="#1e9277"/>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">Job Market Combat Training</h3>
+                <p class="feature-description">
+                    Intensive <span class="highlight-text">algorithm preparation</span> and technical interview coaching designed for today's brutal job market. We don't just teach you to code – we train you to <span class="emphasis">win competitive interviews</span>.
+                </p>
+            </div>
+        </div>
+
+        <div class="unique-feature">
+            <div class="feature-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="25" width="70" height="50" rx="5" fill="#6c63ff"/>
+                    <rect x="20" y="30" width="60" height="6" fill="white"/>
+                    <rect x="20" y="40" width="25" height="4" fill="white"/>
+                    <rect x="20" y="47" width="35" height="4" fill="white"/>
+                    <rect x="20" y="54" width="20" height="4" fill="white"/>
+                    <rect x="20" y="61" width="30" height="4" fill="white"/>
+                    <circle cx="70" cy="52" r="12" fill="white"/>
+                    <path d="M65 52 L68 55 L75 47" stroke="#6c63ff" stroke-width="2" fill="none"/>
+                    <rect x="40" y="15" width="20" height="15" fill="#6c63ff"/>
+                    <polygon points="40,15 50,5 60,15" fill="#6c63ff"/>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">Professional Experience Credentials</h3>
+                <p class="feature-description">
+                    Gain <span class="highlight-text">intensive, project-based experience</span> that mirrors real tech internships with 40+ hour weeks and professional development practices. Build credentials that <span class="emphasis">strengthen your resume</span> and demonstrate workplace readiness.
+                </p>
+            </div>
+        </div>
+
+        <div class="unique-feature">
+            <div class="feature-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="25" cy="25" r="12" fill="#1e9277"/>
+                    <circle cx="75" cy="25" r="12" fill="#1e9277"/>
+                    <circle cx="25" cy="75" r="12" fill="#1e9277"/>
+                    <circle cx="75" cy="75" r="12" fill="#1e9277"/>
+                    <circle cx="50" cy="50" r="15" fill="#6c63ff"/>
+                    <line x1="25" y1="25" x2="50" y2="50" stroke="#1e9277" stroke-width="3"/>
+                    <line x1="75" y1="25" x2="50" y2="50" stroke="#1e9277" stroke-width="3"/>
+                    <line x1="25" y1="75" x2="50" y2="50" stroke="#1e9277" stroke-width="3"/>
+                    <line x1="75" y1="75" x2="50" y2="50" stroke="#1e9277" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="8" fill="white"/>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">Direct Industry Pipeline</h3>
+                <p class="feature-description">
+                    Access <span class="highlight-text">exclusive referral opportunities</span> through our network of partner companies and alumni. Your mentor actively advocates for your placement, not just your education.
+                </p>
+            </div>
+        </div>
+
+        <div class="unique-feature">
+            <div class="feature-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="20" width="70" height="50" rx="3" fill="#6c63ff"/>
+                    <rect x="20" y="25" width="60" height="6" fill="white"/>
+                    <rect x="20" y="35" width="45" height="4" fill="white"/>
+                    <rect x="20" y="42" width="35" height="4" fill="white"/>
+                    <rect x="20" y="49" width="50" height="4" fill="white"/>
+                    <rect x="20" y="56" width="25" height="4" fill="white"/>
+                    <path d="M25 75 L35 85 L75 85 L85 75 L75 65 L25 65 Z" fill="#1e9277"/>
+                    <polygon points="45,72 50,77 55,72" fill="white"/>
+                    <rect x="47" y="74" width="6" height="8" fill="white"/>
+                </svg>
+            </div>
+            <div class="feature-content">
+                <h3 class="feature-title">Measurable Career Impact</h3>
+                <p class="feature-description">
+                    Track your transformation with <span class="highlight-text">concrete portfolio projects</span> and professional references that speak to your growth. <span class="emphasis">90%+ of graduates</span> report dramatically increased confidence and interview success rates.
+                </p>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <div class="cta-container">
+        <a href="signup.html" class="cta-button" style="align-items: center;">
+            Ready to Stand Out? Apply Now →
+        </a>
+    </div>
+</section>
+
+  <br><br>
+  <br><br id="instructors"><br>
+  <section class="instructor-section">
+        <h2 class="section-title">Meet Your Instructors</h2>
+        <br><br>
+        
+        <div class="instructors-container">
+            <!-- Dave Wang - Session I Instructor -->
+            <div class="instructor-card">
+                <div class="instructor-header">
+                    <div class="photo-wrapper">
+    <img src="images/dave.png" alt="Dave Wang" class="instructor-photo">
+</div>
+                    <div class="instructor-basic-info">
+                        <h3 class="instructor-name">Dave</h3>
+                        <p span style = "font-size: 1.2rem">Senior Systems Engineer @ <span style = "color: #6c63ff; font-weight: 600;">Cisco</span></p>
+                    </div>
+                </div>
+
+                <div class="instructor-content">
+                    <div class="content-section">
+                        <h4 class="section-heading">Educational Background</h4>
+                        <ul class="content-list">
+                            <li><span class="highlight-text">B.S. in Electronic Engineering</span> from <span style="color: black; font-weight: 900;">Tsinghua University</span></li>
+                            <li><span class="highlight-text">M.S. in Electrical and Computer Engineering</span> from <span style="color: black; font-weight: 900;">UCLA</span></li>
+                            <li><span class="emphasis">Specialization:</span> Communication systems & embedded computing</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h4 class="section-heading">Core Experience</h4>
+                        <ul class="content-list">
+                            <li>Skilled in <span class="highlight-text">backend development</span> with Java / Go / Node.js</li>
+                            <li>Architected <span class="emphasis">high-concurrency services</span> using microservice architecture</li>
+                            <li>Extensive experience with <span class="highlight-text">gRPC</span>, database optimization, and scalable middleware</li>
+                            <li>Proficient in <span class="emphasis">Docker, Kubernetes, Prometheus</span> for cloud-native deployments</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h4 class="section-heading">In the Bootcamp</h4>
+                        <div class="bootcamp-description">
+                            <p>Guides students through <span class="highlight-text">real-world backend system design</span>, from database modeling to cloud deployment.</p>
+                            <p>Focuses on building <span class="emphasis">resume-worthy project structures</span> and production-grade code standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alex Wang - Session I Instructor -->
+            <div class="instructor-card">
+                <div class="instructor-header">
+                  <div class="photo-wrapper">
+    <img src="images/alex.png" alt="Alex Wang" class="instructor-photo">
+                  </div>
+
+                    <div class="instructor-basic-info">
+                        <h3 class="instructor-name">Alex</h3>
+                        <p span style = "font-size: 1.2rem">Backend Software Engineer  @ <span style = "color: #6c63ff; font-weight: 600;">Amazon</span></p>
+                    </div>
+                </div>
+
+                <div class="instructor-content">
+                    <div class="content-section">
+                        <h4 class="section-heading">Educational Background</h4>
+                        <ul class="content-list">
+                            <li><span class="highlight-text">Master's in Electrical Engineering</span> from USC</li>
+                            <li><span class="emphasis">Focus areas:</span> Cloud architecture, systems engineering, and backend development</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h4 class="section-heading">Core Experience</h4>
+                        <ul class="content-list">
+                            <li>Led development of <span class="highlight-text">microservice modules</span> serving tens of millions of users with Java + Spring Boot</li>
+                            <li>Specialized in <span class="emphasis">RESTful API design</span>, security authentication, and performance optimization</li>
+                            <li>Expert in <span class="highlight-text">AWS ecosystem</span>: EC2, S3, Lambda, RDS, and cloud-native architecture</li>
+                            <li>Key role in improving <span class="emphasis">CI/CD pipeline</span>, enabling full automation from code to production</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h4 class="section-heading">In the Bootcamp</h4>
+                        <div class="bootcamp-description">
+                            <p>Teaches students to write <span class="highlight-text">enterprise-level backend code</span> with Spring Boot and design high-quality APIs.</p>
+                            <p>Walks through complete engineering workflow: <span class="workflow-text">code → test → deploy → deliver</span>. Students complete a deployable backend project suitable for their resume.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <br><br><br><br><br id="course-details">
+  <h2 class="section-title unique-section-title">Course Details</h2>
+
+  <div class="course-container">
+  <div class="course-section">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="header-main-text">Java/Spring Backend</div>
+      <div class="header-date-text">June 2 - June 27</div>
+    </div>
+    <div class="section-content">
+      <!-- Your entire session content goes here -->
+      <div class="session-grid-horizontal">
+        <!-- Week 1 -->
+        <div class="session-card-horizontal">
+          <div class="session-header">
+            <div class="session-number">1</div>
+            <div class="session-info">
+              <h3 class="session-title">Foundation Building</h3>
+              <div class="session-theme">Programming Basics + SpringBoot & FastAPI + Project Management Tools</div>
+            </div>
+          </div>
+          
+          <div class="session-body">
+            <div class="content-left">
+              <div class="session-content">
+                <h4>Content:</h4>
+                <ul>
+                  <li>Course introduction and career path planning</li>
+                  <li>Quick start with Java (SpringBoot) vs Python (FastAPI)</li>
+                  <li>Basic operations with Git / GitHub / GitLab</li>
+                  <li>IDE setup (IntelliJ / VS Code)</li>
+                  <li>RESTful API vs gRPC: Basic concepts and differences</li>
+                  <li>Mini project exercise: Build a CRUD API for employee management</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="content-right">
+              <div class="homework-section">
+                <h4><i class="fas fa-tasks"></i> Lab:</h4>
+                <ul>
+                  <li>Create a basic API service using SpringBoot or FastAPI (with create, read, update, delete)</li>
+                  <li>Deploy locally using Docker</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="session-card-horizontal">
+          <div class="session-header">
+            <div class="session-number">2</div>
+            <div class="session-info">
+              <h3 class="session-title">Cloud Computing & Docker</h3>
+              <div class="session-theme">Cloud Service Operations + Containerized Deployment</div>
+            </div>
+          </div>
+          
+          <div class="session-body">
+            <div class="content-left">
+              <div class="session-content">
+                <h4>Content:</h4>
+                <ul>
+                  <li>Introduction to AWS/GCP cloud services (IAM / EC2 / S3 / Lambda / SQS)</li>
+                  <li>Use AWS CLI to upload files and send SQS messages</li>
+                  <li>Docker fundamentals (build, run, compose)</li>
+                  <li>Dockerize your Flask or SpringBoot project</li>
+                  <li>Introduction to CI/CD (GitHub Actions / Jenkins basics)</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="content-right">
+              <div class="homework-section">
+                <h4><i class="fas fa-tasks"></i> Lab:</h4>
+                <ul>
+                  <li>Build a Docker image for last week's project</li>
+                  <li>Deploy the image to a cloud server (or local Kubernetes environment)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="session-card-horizontal">
+          <div class="session-header">
+            <div class="session-number">3</div>
+            <div class="session-info">
+              <h3 class="session-title">Kubernetes & Project Development</h3>
+              <div class="session-theme">Container Orchestration + Project Architecture Design</div>
+            </div>
+          </div>
+          
+          <div class="session-body">
+            <div class="content-left">
+              <div class="session-content">
+                <h4>Content:</h4>
+                <ul>
+                  <li>Core Kubernetes concepts (pod, service, ingress)</li>
+                  <li>Install services like MySQL/Postgres/Weaviate using Helm Charts</li>
+                  <li>Deploy a full application on K8s (including VectorDB)</li>
+                  <li>System design discussion (scalability, fault tolerance, high availability)</li>
+                  <li>Guide to start final project: RAG (Retrieval-Augmented Generation) chat system</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="content-right">
+              <div class="homework-section">
+                <h4><i class="fas fa-tasks"></i> Lab:</h4>
+                <ul>
+                  <li>Read the base framework of the RAG project, choose a tech stack (Java or Python)</li>
+                  <li>Begin building document upload + vectorization + query API</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="session-card-horizontal">
+          <div class="session-header">
+            <div class="session-number">4</div>
+            <div class="session-info">
+              <h3 class="session-title">RAG Implementation & Interview Prep</h3>
+              <div class="session-theme">RAG Solution + Project Packaging + Interview Skills</div>
+            </div>
+          </div>
+          
+          <div class="session-body">
+            <div class="content-left">
+              <div class="session-content">
+                <h4>Content:</h4>
+                <ul>
+                  <li>Basic architecture of Retrieval-Augmented Generation</li>
+                  <li>Introduction to vector databases: Weaviate, Chroma, FAISS</li>
+                  <li>Prompt template design and context chunking strategies</li>
+                  <li>Using OpenAI/LLMs for question-answering</li>
+                  <li>Interview techniques (system design, project presentation, Leetcode strategies)</li>
+                  <li>Final project presentation practice</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="content-right">
+              <div class="homework-section">
+                <h4><i class="fas fa-tasks"></i> Lab:</h4>
+                <ul>
+                  <li>Complete project deployment and documentation</li>
+                  <li>Prepare a 10-minute project presentation (PPT + Demo)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Data Science/AI & LLM Session -->
+    <div class="course-container">
+        <div class="course-section">
+            <div class="section-header" onclick="toggleSection(this)">
+      <div class="header-main-text">Data Science/AI & LLM</div>
+      <div class="header-date-text">July 1 - July 27</div>
+    </div>
+            <div class="section-content">
+                <div class="session-grid-horizontal">
+                    <!-- Week 1 -->
+                    <div class="session-card-horizontal">
+                        <div class="session-header">
+                            <div class="session-number">1</div>
+                            <div class="session-info">
+                                <h3 class="session-title">Java & Spring Framework Mastery</h3>
+                                <div class="session-theme">Core Java + Spring Boot & Framework + OOP Fundamentals</div>
+                            </div>
+                        </div>
+                        
+                        <div class="session-body">
+                            <div class="content-left">
+                                <div class="session-content">
+                                    <h4>Content:</h4>
+                                    <ul>
+                                        <li>Java fundamentals and programming essentials</li>
+                                        <li>Spring Framework AOP and advanced API development</li>
+                                        <li>Object-Oriented Programming concepts and best practices</li>
+                                        <li>Java memory management and optimization techniques</li>
+                                        <li>Multi-threading programming and concurrent execution</li>
+                                        <li>RESTful API development with Spring Boot and Spring Framework</li>
+                                        <li>Daily coding practice: 2-3 LeetCode algorithm challenges</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="content-right">
+                                <div class="homework-section">
+                                    <h4><i class="fas fa-tasks"></i> Lab:</h4>
+                                    <ul>
+                                        <li>Build Project #1: Employee CRUD RESTful API using Spring Framework</li>
+                                        <li>Complete system design project focusing on API architecture and trade-offs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 2 -->
+                    <div class="session-card-horizontal">
+                        <div class="session-header">
+                            <div class="session-number">2</div>
+                            <div class="session-info">
+                                <h3 class="session-title">Cloud Computing & Big Data</h3>
+                                <div class="session-theme">Cloud Services + Containerization + Data Processing</div>
+                            </div>
+                        </div>
+                        
+                        <div class="session-body">
+                            <div class="content-left">
+                                <div class="session-content">
+                                    <h4>Content:</h4>
+                                    <ul>
+                                        <li>AWS/GCP cloud services (IAM, EC2, S3, Lambda, SQS, API Gateway, Glue)</li>
+                                        <li>Docker fundamentals (build, run, compose operations)</li>
+                                        <li>Containerize Java applications with Docker</li>
+                                        <li>Spring AOP integration with cloud services</li>
+                                        <li>CI/CD pipeline setup (GitHub Actions and Jenkins)</li>
+                                        <li>Database and big data processing introduction</li>
+                                        <li>Apache Spark and distributed system architecture</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="content-right">
+                                <div class="homework-section">
+                                    <h4><i class="fas fa-tasks"></i> Lab:</h4>
+                                    <ul>
+                                        <li>Dockerize previous week's Spring Boot project</li>
+                                        <li>Design and implement a scalable cloud-based system architecture</li>
+                                        <li>Continue daily LeetCode practice and algorithm optimization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 3 -->
+                    <div class="session-card-horizontal">
+                        <div class="session-header">
+                            <div class="session-number">3</div>
+                            <div class="session-info">
+                                <h3 class="session-title">DevOps & System Design</h3>
+                                <div class="session-theme">Cloud Operations + Kubernetes + Monitoring & Performance</div>
+                            </div>
+                        </div>
+                        
+                        <div class="session-body">
+                            <div class="content-left">
+                                <div class="session-content">
+                                    <h4>Content:</h4>
+                                    <ul>
+                                        <li>DevOps principles and cloud operations management</li>
+                                        <li>Kubernetes fundamentals and container orchestration</li>
+                                        <li>Helm Chart deployment and package management</li>
+                                        <li>Grafana and Prometheus monitoring setup</li>
+                                        <li>System scalability, performance optimization, and metrics analysis</li>
+                                        <li>Advanced system design patterns and architectural decisions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="content-right">
+                                <div class="homework-section">
+                                    <h4><i class="fas fa-tasks"></i> Lab:</h4>
+                                    <ul>
+                                        <li>Deploy application on Kubernetes with monitoring stack</li>
+                                        <li>Design a high-availability system with performance trade-off analysis</li>
+                                        <li>Algorithm practice: Advanced data structures and optimization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 4 -->
+                    <div class="session-card-horizontal">
+                        <div class="session-header">
+                            <div class="session-number">4</div>
+                            <div class="session-info">
+                                <h3 class="session-title">AI Integration & Interview Preparation</h3>
+                                <div class="session-theme">RAG Systems + LLM Integration + Career Readiness</div>
+                            </div>
+                        </div>
+                        
+                        <div class="session-body">
+                            <div class="content-left">
+                                <div class="session-content">
+                                    <h4>Content:</h4>
+                                    <ul>
+                                        <li>Retrieval-Augmented Generation (RAG) system architecture</li>
+                                        <li>Vector database integration and management</li>
+                                        <li>Prompt engineering and optimization techniques</li>
+                                        <li>OpenAI, ChatGPT, and LLM integration (Llama3 and alternatives)</li>
+                                        <li>End-to-end system integration and deployment</li>
+                                        <li>Technical interview preparation and system design practice</li>
+                                        <li>Final project presentation and portfolio development</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="content-right">
+                                <div class="homework-section">
+                                    <h4><i class="fas fa-tasks"></i> Lab:</h4>
+                                    <ul>
+                                        <li>Complete final RAG project with full system integration</li>
+                                        <li>Prepare comprehensive project presentation and technical demo</li>
+                                        <li>Final design project: Enterprise-scale system architecture</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DevOps & Microservices Session -->
+    <div class="course-container">
+        <div class="course-section">
+            <div class="section-header" onclick="toggleSection(this)">
+      <div class="header-main-text">DevOps & Microservices</div>
+      <div class="header-date-text">August 2 - August 28</div>
+    </div>
+            <div class="section-content">
+                <div class="session-grid-horizontal coming-soon-content">
+                  <p><span class="coming-soon-text">Coming soon!</span> Detailed curriculum for our DevOps and Microservices track.</p>
+                  </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--<div class="content-section" id="session-3">
+      <div class="content">
+        <h3 class="section-title">DevOps & Microservices Session</h3>
+        <p style="color: #4a4a4a; font-size: 1.1rem; margin-bottom: 2rem;">Coming soon - detailed curriculum for our DevOps and Microservices track.</p>
+      </div>
+    </div>-->
+    <br>
+    <br>
+    <br>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Us</h4>
+        <p>
+          Lu Duoxi×Beshton Tech Bootcamp provides industry-leading tech education
+          to help students accelerate their careers.
+        </p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="session.html">Sessions</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <ul>
+          <li>Email: info@offerdoer.com</li>
+          <li>Phone: (123) 456-7890</li>
+          <li>Address: Sunnyvale, CA</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Questions? Want to learn more about our courses? Interested in our mission? Leave us a message.</p>
+        <form>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            style="
+              padding: 10px;
+              width: 100%;
+              margin-top: 10px;
+              background: transparent;
+              border: 1px solid #64ffda;
+              color: #E6F1FF;
+              border-radius: 5px;
+            "
+          />
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 Lu Duoxi×Beshton Tech Bootcamp. All rights reserved.</p>
+    </div>
+  </footer>
+<script>
+function toggleSection(element) {
+  // Toggle active class on the section header (for the + to x animation)
+  element.classList.toggle('active');
+  
+  // Toggle active class on the parent course-section (for the content visibility)
+  const courseSection = element.parentElement;
+  const sectionContent = courseSection.querySelector('.section-content');
+  
+  // Toggle the active class on the content
+  sectionContent.classList.toggle('active');
+  
+  // Also toggle on the parent section for additional styling
+  courseSection.classList.toggle('active');
+}
+</script>
+</body>
+</html>
+
+    <!-- Additional Activities 
+    <div class="activities-section">
+      <div class="content">
+        <h3 class="section-title sessions-title">Additional Activities</h3>
+        <div class="activities-grid">
+          
+          <div class="activity-card">
+            <div class="activity-icon">
+              <i class="fas fa-sitemap"></i>
+            </div>
+            <h4>Weekly System Design</h4>
+            <p>Complete 1 system design project each week (4 total), focusing on architecture, trade-offs, performance, and scalability.</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!--    <p> Interested? Don't delay, enroll today. </p>
+-->
