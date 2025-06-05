@@ -1611,56 +1611,128 @@
     </div>
   </footer>
 
-  <!-- Floating Contact Button -->
-    <button class="contact-fab" id="contactFab">
-        <svg viewBox="0 0 24 24">
-    <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-</svg>
-    </button>
+<!-- Floating Contact Button -->
+<button class="contact-fab" id="contactFab">
+    <svg viewBox="0 0 24 24">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+    </svg>
+</button>
 
-    <!-- Contact Panel -->
-    <div class="contact-panel" id="contactPanel">
-        <button class="close-btn" id="closeBtn">&times;</button>
-        
+<!-- Contact Panel -->
+<div class="contact-panel" id="contactPanel">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    
+    <!-- Default Form View -->
+    <div class="form-content" id="formContent">
         <h3>Get In Touch</h3>
         <p>Any questions? Interested in our offerings? Leave us a message.</p>
         
-        <form class="contact-form" name="contact" method="POST" data-netlify="true">
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="bot-field" />
             <input type="email" name="email" placeholder="Enter your email" required>
             <input type="tel" name="phone" placeholder="Or enter your phone number">
             <textarea name="message" placeholder="Leave us a message..." rows="4"></textarea>
             <button type="submit">Send Message</button>
         </form>
     </div>
+    
+    <!-- Success Message View -->
+    <div class="success-content" id="successContent" style="display: none;">
+        <h3 style="color: #6c63ff;">Thanks for contacting us!</h3>
+        <p>We'll be in touch soon.</p>
+        <button class="new-message-btn" id="newMessageBtn">Send Another Message</button>
+    </div>
+</div>
 
-    <script>
-        const contactFab = document.getElementById('contactFab');
-        const contactPanel = document.getElementById('contactPanel');
-        const closeBtn = document.getElementById('closeBtn');
+<style>
+    .success-content {
+        text-align: center;
+        padding: 20px 0;
+    }
+    
+    .new-message-btn {
+        background: #10d9aa;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 2px;
+        border-color: #0f868c; 
+        cursor: pointer;
+        margin-top: 15px;
+        font-family: Inter, sans-serif;
+    }
+    
+    .new-message-btn:hover {
+        background: #78f7da;
+    }
+</style>
 
-        contactFab.addEventListener('click', () => {
-    contactPanel.classList.toggle('active');
-});
+<script>
+    const contactFab = document.getElementById('contactFab');
+    const contactPanel = document.getElementById('contactPanel');
+    const closeBtn = document.getElementById('closeBtn');
+    const formContent = document.getElementById('formContent');
+    const successContent = document.getElementById('successContent');
+    const newMessageBtn = document.getElementById('newMessageBtn');
+    const contactForm = document.querySelector('.contact-form');
 
-        closeBtn.addEventListener('click', () => {
+    contactFab.addEventListener('click', () => {
+        contactPanel.classList.toggle('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        contactPanel.classList.remove('active');
+    });
+
+    // Close panel when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!contactPanel.contains(e.target) && !contactFab.contains(e.target)) {
             contactPanel.classList.remove('active');
-        });
+        }
+    });
 
-        // Close panel when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!contactPanel.contains(e.target) && !contactFab.contains(e.target)) {
-                contactPanel.classList.remove('active');
-            }
-        });
+    // Close panel on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            contactPanel.classList.remove('active');
+        }
+    });
 
-        // Close panel on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                contactPanel.classList.remove('active');
+    // Handle form submission
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const form = e.target;
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            });
+            
+            if (response.ok) {
+                // Show success message
+                formContent.style.display = 'none';
+                successContent.style.display = 'block';
+                form.reset();
+            } else {
+                throw new Error('Form submission failed');
             }
-        });
-    </script>
-  
+        } catch (error) {
+            console.error('Form submission error:', error);
+            alert('There was an error sending your message. Please try again.');
+        }
+    });
+
+    // Handle "Send Another Message" button
+    newMessageBtn.addEventListener('click', () => {
+        successContent.style.display = 'none';
+        formContent.style.display = 'block';
+    });
+</script>
+
 <script>
 function toggleSection(element) {
   // Toggle active class on the section header (for the + to x animation)

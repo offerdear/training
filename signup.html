@@ -21,6 +21,10 @@
       color: #78f7da !important;
     }
 
+    .contact-link:hover {
+      color: #78f7da !important;
+    }
+
     .footer {
     background-color: rgba(10, 25, 47, 0.9);
     padding: 20px 0 20px;
@@ -100,10 +104,10 @@
     <div>
       <p style="font-size: 1.4rem; color: teal; margin-left: 4px; margin-bottom: 2px; font-family: 'DM Sans', sans-serif;">
   Email us: 
-  <a href="mailto:info@offerdeer.com" class="email-link" style="font-family: 'Inter Tight', sans-serif; font-size: 1.5rem; text-decoration: none;">
+  <a href="mailto:info@offerdeer.com" class="contact-link" style="color: black; font-family: 'Inter Tight', sans-serif; font-size: 1.5rem; text-decoration: none;">
     info@offerdeer.com
 </a><br><span style="padding-left: 96px;">
-  <a href="mailto:info@beshton.com" class="email-link" style="font-family: 'Inter Tight', sans-serif; font-size: 1.5rem; text-decoration: none;">
+  <a href="mailto:info@beshton.com" class="contact-link" style="color: black; font-family: 'Inter Tight', sans-serif; font-size: 1.5rem; text-decoration: none;">
     info@beshton.com
 </a></span>
 </p>
@@ -165,7 +169,9 @@
 
 <!-- Contact Panel -->
 <div class="contact-panel" id="contactPanel">
+  
     <button class="close-btn" id="closeBtn">&times;</button>
+    <p> Contact Us</p>
     
     <!-- Default Form View -->
     <div class="form-content" id="formContent">
@@ -183,7 +189,7 @@
     
     <!-- Success Message View -->
     <div class="success-content" id="successContent" style="display: none;">
-        <h3>Thanks for contacting us!</h3>
+        <h3 style="color: #6c63ff;">Thanks for contacting us!</h3>
         <p>We'll be in touch soon.</p>
         <button class="new-message-btn" id="newMessageBtn">Send Another Message</button>
     </div>
@@ -196,17 +202,19 @@
     }
     
     .new-message-btn {
-        background: #007bff;
+        background: #10d9aa;
         color: white;
         border: none;
         padding: 10px 20px;
-        border-radius: 5px;
+        border-radius: 2px;
+        border-color: #0f868c; 
         cursor: pointer;
         margin-top: 15px;
+        font-family: Inter, sans-serif;
     }
     
     .new-message-btn:hover {
-        background: #0056b3;
+        background: #78f7da;
     }
 </style>
 
