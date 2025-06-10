@@ -362,7 +362,7 @@ body {
 /* Call-to-action button style */
 .cta-button:hover {
     background-color: rgba(100, 255, 218, 0.1);
-    transform: translateY(-3px);
+    transform: translateY(-1px);
     box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
 }
 
@@ -799,7 +799,7 @@ body {
             
             .bottom-line {
                 padding: 2rem;
-                font-size: 1rem;
+                font-size: 1rem !important;
             }
         }
 
@@ -864,3 +864,93 @@ body {
             font-size: 1.2rem;
             box-shadow: 0 6px 20px rgba(10, 25, 47, 0.2);
         }
+
+
+/* Mobile styles for external CSS classes */
+@media (max-width: 768px) {
+  /* Navigation adjustments */
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-menu ul li {
+    text-align: center;
+  }
+
+  .nav-logos {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .nav {
+    padding: 10px;
+  }
+
+  /* Container adjustments */
+  .container {
+    padding: 10px;
+    margin: 0;
+  }
+
+  /* Footer mobile adjustments */
+  .footer-content {
+    flex-direction: column !important;
+    gap: 20px;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding: 15px 10px;
+  }
+
+  /* Logo adjustments */
+  .logo {
+    max-width: 120px;
+  }
+
+  .offerdeer-logo,
+  .beshton-logo {
+    height: auto;
+  }
+
+  /* Floating contact button */
+  .contact-fab {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .contact-panel {
+    width: 90%;
+    max-width: 350px;
+    right: 5%;
+    bottom: 80px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 15px;
+  }
+
+  .nav-logos {
+    gap: 15px;
+  }
+
+  .footer-content {
+    gap: 25px;
+  }
+}

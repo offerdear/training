@@ -1,0 +1,122 @@
+    /* Mobile toggle button - hidden by default */
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 28px;
+        color: white; /* Adjust to match your nav color */
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    /* Mobile dropdown - hidden by default */
+    .mobile-dropdown {
+        display: none;
+        position: absolute;
+        top: 80px; /* Position below the nav bar */
+        right: 20px;
+        background: rgba(10, 25, 47, 0.9);
+        border: 1px solid #ddd;
+        border-radius: 7px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        min-width: 200px;
+    }
+
+    .mobile-dropdown a {
+        display: block;
+        padding: 12px 16px;
+        text-decoration: none;
+        color: white;
+        border-bottom: 1px solid #eee;
+    }
+
+    .mobile-dropdown a:last-child {
+        border-bottom: none;
+    }
+
+    .mobile-dropdown.show {
+        display: block;
+    }
+
+    .mobile-dropdown a:hover {
+    background-color: #61f4d2 !important; /* Your existing teal color */
+    color: teal; /* Dark text since this teal is lighter */
+}
+
+    @media screen and (max-width: 768px) {
+    /* Fix the nav container to prevent internal scrolling */
+    .nav {
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important; /* Fixed: changed from 'left' to 'center' */
+        padding: 10px 60px 10px 8px !important;
+        height: 65px !important; /* Set fixed height for nav */
+        overflow: hidden !important; /* Prevent internal scrolling */
+        position: relative !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* FORCE horizontal alignment of logos */
+    .nav-logos {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important; /* Fixed: changed from 'left' to 'center' */
+        justify-content: flex-start !important;
+        gap: 10px !important;
+        height: 50px !important; /* Use full height of nav */
+        width: auto !important;
+        flex-wrap: nowrap !important;
+        overflow: hidden !important; /* Prevent logos from causing scroll */
+        flex-shrink: 1 !important; /* Allow shrinking if needed */
+        transform: translateY(-5px) !important;
+        margin-left: 1px !important; /* Add this to ensure no left margin */
+    margin-right: auto !important; /* Add this to push it to the left */
+    }
+
+    /* Make logos fit properly */
+    .logo {
+        height: 35px !important;
+        width: auto !important;
+        max-width: 100px !important; /* Prevent logos from getting too wide */
+        object-fit: contain !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Fix the Beshton logo specifically */
+    .beshton-logo {
+        height: 110px !important; /* Same as other logos, not 110px */
+        max-width: 120px !important;
+        padding-top: 5px !important;
+    }
+
+    /* Make the "x" smaller and centered */
+    .collaboration-x {
+        font-size: 1rem !important;
+        margin: 0 5px !important;
+        flex-shrink: 0 !important;
+        line-height: 1 !important;
+    }
+
+    /* Ensure mobile toggle button stays in place */
+    .mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        flex-shrink: 0 !important;
+        z-index: 1001;
+    }
+
+    /* Hide desktop menu */
+    .nav-menu {
+        display: none !important;
+    }
+
+    /* Fix body to prevent overall scroll issues */
+    body {
+        overflow-x: hidden; /* Prevent horizontal scroll on entire page */
+    }
+}
