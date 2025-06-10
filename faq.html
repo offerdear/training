@@ -15,9 +15,19 @@
 
   <!-- Your Styles -->
   <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobileheader.css" />
+      <link rel="stylesheet" href="styles/mobilefooter.css" />
+
 
   <!-- FAQ-specific styles -->
   <style>
+    .container {
+    max-width: 1200px ;
+    margin: 80px auto 0;
+    padding: 0px !important;
+}
+    
+
     .faq-container {
       max-width: 900px;
       margin: 0 auto;
@@ -81,6 +91,7 @@
 
     h3.section-title {
   margin-top: 10px;
+  text-align: center !important;
 }
 
     .faq-item.active .faq-answer {
@@ -111,9 +122,28 @@
     }
 
     @media (max-width: 768px) {
+
+      .container {
+        text-align: center;
+    margin: 0px auto 0;
+}
       .faq-question {
-        padding: 20px 25px;
+        max-width: 380px;
+      }
+
+      h3.section-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 40px;
+      }
+
+      .faq-question {
+        padding: 10px 15px;
         font-size: 1rem;
+        text-align: left;
+      }
+
+      .faq-answer {
+        text-align: left;
       }
       
       .faq-question::after {
@@ -125,6 +155,7 @@
     color: rgb(2, 166, 166);  /* Purple for "Coming soon!" */
     font-weight: 600; /* Optional: make it slightly bolder */
 }
+
   </style>
 </head>
 
@@ -144,27 +175,38 @@
 </script>
 
 <body>
-  <!-- Navigation bar -->
   <nav class="nav">
-<!-- Container for logos in nav -->
-  <div class="nav-logos">
-  <!-- Wrap Offerdeer logo in a link -->
-   <img src="images/offerdeer_logo.svg" alt="Offerdeer Logo" class="logo offerdeer-logo"/>
-    <p class="collaboration-x">x</p>
-    <img src="images/beshton_white_text_transparent_bg.png" alt="Beshton Software Logo" class="logo beshton-logo"/>
-</div>
-<!-- Navigation menu items -->
-    <div class="nav-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="session.html">2025 Programs</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="signup.html" class="get-started-link">Get Started</a></li>
-      </ul>
+    <!-- Container for logos in nav -->
+    <div class="nav-logos">
+        <img src="images/offerdeer_logo.svg" alt="Offerdeer Logo" class="logo offerdeer-logo"/>
+        <p class="collaboration-x">x</p>
+        <img src="images/beshton_white_text_transparent_bg.png" alt="Beshton Software Logo" class="logo beshton-logo"/>
     </div>
-  </nav>
 
-  <br><br>
+        <!-- ADD THIS: Mobile menu toggle button -->
+    <button class="mobile-menu-toggle" id="mobileToggle">☰</button>
+    
+    <!-- Navigation menu items -->
+    <div class="nav-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="session.html">2025 Programs</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="signup.html" class="get-started-link">Get Started</a></li>
+        </ul>
+    </div>
+    
+</nav>
+
+<!-- ADD THIS: Mobile dropdown menu -->
+    <div class="mobile-dropdown" id="mobileDropdown">
+        <a href="index.html">Home</a>
+        <a href="session.html">2025 Programs</a>
+        <a href="faq.html">FAQ</a>
+        <a href="signup.html" class="get-started-link">Sign Up Today</a>
+    </div>
+
+  <br><br><br>
 
   <div class="container">
     <h3 class="section-title">Frequently Asked Questions</h3>
@@ -173,11 +215,14 @@
       
       <div class="faq-item">
         <div class="faq-question">
-          Do I need prior programming experience to join the bootcamp?
+          What prior experience do I need to join the bootcamp?
         </div>
         <div class="faq-answer">
-          <p>No prior experience is required! Our program is designed to take you <span class="highlight-text">from zero to industry-ready</span>. We start with fundamentals and build up to advanced concepts progressively.</p>
-          <p>However, having basic familiarity with computers and a strong willingness to learn will help you succeed faster.</p>
+          <p>This program is designed for students who already <span class="highlight-text">have taken some
+            coursework</span> in computer programming / engineering and who are interested
+            in pursuing it for a career. If you don't have this background 
+            but would still like to participate, contact us directly</span>- 
+            we have other offerings which may fit your experience level better.</p>
         </div>
       </div>
 
@@ -186,8 +231,23 @@
           How intensive is the 4-week program? Can I work while attending?
         </div>
         <div class="faq-answer">
-          <p>This is an <span class="emphasis">intensive, project-driven bootcamp</span> requiring 40+ hours per week of commitment. Most successful students treat this as their primary focus during the 4 weeks.</p>
-          <p>While some students manage part-time work, we recommend clearing your schedule as much as possible to maximize your learning and project outcomes.</p>
+          <p>This is an <span class="emphasis">intensive, project-driven course</span> 
+            requiring 30+ hours per week of commitment. Most successful students treat this as 
+            their primary focus during the 4 weeks.</p>
+          <p>While some students manage part-time work, we recommend clearing your 
+            schedule as much as possible to maximize your learning and project outcomes.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How is the course set up? Is it in-person, hybrid or remote?
+        </div>
+        <div class="faq-answer">
+          <p>This is a<span class="emphasis">hybrid</span> course with the option to be 
+            fully remote. You will also have access to our 
+            <span class="highlight-text">in-person office</span> in Mountain View, CA, where you
+            are free to drop by for co-working, mentorship, and extra support whenever you need it.</p>
         </div>
       </div>
 
@@ -196,7 +256,7 @@
           What makes this bootcamp different from online courses or tutorials?
         </div>
         <div class="faq-answer">
-          <p>Unlike passive learning, you'll build <span class="highlight-text">real enterprise-level projects</span> that impress employers and admissions committees.</p>
+          <p>Unlike passive learning, you'll build <span class="highlight-text">real enterprise-level projects</span> that impress employers.</p>
           <p>You also get:</p>
           <p>• <span class="emphasis">1:1 mentorship</span> from Silicon Valley engineers<br>
           • <span class="emphasis">Personalized recommendation letters</span><br>
@@ -207,14 +267,16 @@
 
       <div class="faq-item">
         <div class="faq-question">
-          Which track should I choose if I'm unsure about my career direction?
+          How does the 1:1 mentorship work?
         </div>
         <div class="faq-answer">
-          <p>Consider your interests and career goals:</p>
-          <p>• <span class="highlight-text">Java/Spring Backend</span> - Great for traditional software engineering roles<br>
-          • <span class="highlight-text">Data Science/AI & LLM</span> - Perfect for AI/ML careers and research<br>
-          • <span class="highlight-text">DevOps & Microservices</span> - Ideal for modern cloud architecture roles</p>
-          <p>We offer pre-program consultations to help you choose the best fit for your goals.</p>
+          <p>You will have 1:1 access to <span class="highlight-text">senior Silicon Valley engineers</span>
+            focused on making you job-ready: </p>
+          <p>• Weekly 1-hour video sessions for guidance and code review<br>
+          • Daily availability in-person and online for tutoring, support, and career strategy<br>
+          • Exclusive insights into hiring and industry<br>
+          • Resume review and portfolio optimization</p>
+          <p>Your mentor stays with you throughout the entire 4-week journey.</p>
         </div>
       </div>
 
@@ -224,25 +286,26 @@
         </div>
         <div class="faq-answer">
           <p>You'll create <span class="emphasis">portfolio-worthy projects</span> that demonstrate real-world skills:</p>
-          <p>• Full-stack web applications with modern frameworks<br>
-          • AI-powered applications using cutting-edge LLM technology<br>
+          <p>• Full-stack web applications with modern industry frameworks<br>
+          • AI-powered applications with state-of-the-art LLM technology<br>
           • Microservices architectures deployed on cloud platforms<br>
           • Open-source contributions to established projects</p>
-          <p>All projects are designed to be <span class="highlight-text">impressive to HR teams and admissions officers</span>.</p>
+          <p>All projects are designed to help you gain enterprise-level experience, 
+            <span class="highlight-text">showcase your skills</span>, and increase your hireability
+            in the eyes of potential employers.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question">
-          How does the 1:1 mentorship work?
+          I have a scheduling conflict and can't make the track that I'm interested in.
         </div>
         <div class="faq-answer">
-          <p>Each student is paired with a <span class="highlight-text">Silicon Valley engineer mentor</span> who provides:</p>
-          <p>• Weekly 1-hour video sessions for guidance and code review<br>
-          • Daily availability via Slack for quick questions<br>
-          • Career advice and industry insights<br>
-          • Personalized recommendation letter upon completion</p>
-          <p>Your mentor stays with you throughout the entire 4-week journey.</p>
+          <p><span class="highlight-text">Don't worry - we're flexible!</span>
+          <p>We understand that scheduling conflicts happen, so please reach out
+            and we'll work with you to see what alternative arrangements are possible.
+          </p>
+          <p><span class="highlight-text">Contact us</span> and we'll find a solution that works for you!</p>
         </div>
       </div>
 
@@ -265,25 +328,11 @@
           Is there any guarantee I'll get an internship or job after the program?
         </div>
         <div class="faq-answer">
-          <p>While we cannot guarantee specific outcomes, our program is designed to <span class="highlight-text">maximize your competitiveness</span>:</p>
-          <p>• 90%+ of graduates report feeling significantly more confident in technical interviews<br>
-          • Students typically see 3-5x more interview callbacks after completing projects<br>
+          <p>While we cannot guarantee specific outcomes, our program is designed to 
+            <span class="highlight-text">maximize your competitiveness</span>:</p>
+          <p>• 90%+ of graduates report that the program has made them a more competitive candidate <br>
           • Our recommendation letters have helped students secure positions at top-tier companies</p>
           <p>Your success depends on your dedication and effort during the program.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          What are the technical requirements to participate?
-        </div>
-        <div class="faq-answer">
-          <p>You'll need:</p>
-          <p>• A laptop/computer capable of running development tools<br>
-          • Stable internet connection for video calls and collaboration<br>
-          • Willingness to install necessary software (we'll guide you through setup)<br>
-          • GitHub account for project collaboration</p>
-          <p>We provide detailed setup instructions and technical support throughout the program.</p>
         </div>
       </div>
 
@@ -292,12 +341,12 @@
 
   <br><br id="testimonials"><br><br><br><br>
   <div class="container" style="margin-top: 20px;">
-    <h3 class="section-title" >Testimonials</h3>
+    <h3 class="section-title">Testimonials</h3>
 
         <div class="session-grid-horizontal coming-soon-content" style="text-align: center; padding: 20px; font-size: 1.2rem; font-weight: 500;">
-        <p><span class="coming-soon-text" >Coming very soon!</span> 
+        <p><span class="coming-soon-text">Coming very soon!</span> 
           Updates from students who landed great offers after attending our program. <br>
-          Our mentors don't just teach, they connect you to real opportunities.</div>
+        </div>
         <br>
   </div>
 
@@ -437,6 +486,34 @@
 </style>
 
 <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('mobileToggle');
+            const dropdown = document.getElementById('mobileDropdown');
+            
+            if (toggle && dropdown) {
+                // Toggle dropdown when button is clicked
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+                
+                // Close dropdown when clicking a link
+                dropdown.addEventListener('click', function() {
+                    dropdown.classList.remove('show');
+                });
+            }
+        });
+    </script>
+
+
+<script>
     const contactFab = document.getElementById('contactFab');
     const contactPanel = document.getElementById('contactPanel');
     const closeBtn = document.getElementById('closeBtn');
@@ -521,5 +598,7 @@
       });
     });
   </script>
+
+  
 </body>
 </html>

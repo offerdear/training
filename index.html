@@ -15,19 +15,72 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 <!-- QR Code Library -->
-<!-- QR Code JavaScript library -->
   <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-
-  <!-- Font Awesome -->
-<!-- Font Awesome icons CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
   <!-- Your Styles -->
-<!-- Custom CSS file -->
   <link rel="stylesheet" href="styles/style.css" />
+      <link rel="stylesheet" href="styles/mobileheader.css" />
+    <link rel="stylesheet" href="styles/mobilefooter.css" />
 </head>
-<!-- Start of visible page content -->
+<style>
+  @media (max-width: 768px) {    
+    .intro-section {
+        padding-top: 1rem;
+        margin-left: 20px;
+    }
+
+    h1 {
+      font-size: 2rem !important;
+    }
+
+    p {
+      padding-right: 1rem;
+    }
+
+    .collaboration-x {
+    padding-right: 0 !important;
+}
+
+    .mobile-hide { display: none !important; }
+
+    .mobile-large-text {
+      font-size: 1.2rem !important;
+      font-family: Inter, sans-serif;
+    }
+
+  }
+</style>
+
 <body>
+
+  <nav class="nav">
+    <div class="nav-logos">
+    <!-- Wrap Offerdeer logo in a link -->
+    <img src="images/offerdeer_logo.svg" alt="Offerdeer Logo" class="logo offerdeer-logo"/>
+    <p class="collaboration-x">x</p>
+    <img src="images/beshton_white_text_transparent_bg.png" alt="Beshton Software Logo" class="logo beshton-logo"/>
+  </div>
+
+    <button class="mobile-menu-toggle" id="mobileToggle">☰</button>
+
+  <!-- Navigation menu items -->
+      <div class="nav-menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="session.html">2025 Programs</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="signup.html" class="get-started-link">Get Started</a></li>
+        </ul>
+      </div>
+
+  </nav>
+
+  <div class="mobile-dropdown" id="mobileDropdown">
+        <a href="index.html">Home</a>
+        <a href="session.html">2025 Programs</a>
+        <a href="faq.html">FAQ</a>
+        <a href="signup.html" class="get-started-link">Sign Up Today</a>
+    </div>
+
   <!-- Modern Intro Section -->
   <section class="intro-section" >
     <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
@@ -38,7 +91,10 @@
           Accelerate Your Tech Career
         </h1>
         <p style="font-size: 1.1rem; color: #333; margin-bottom: 3rem;">
-          Offerdeer is a 4-week, project-driven bootcamp where you’ll build enterprise-level software, gain mentorship from Silicon Valley engineers, and lay the foundations for your career.
+          Join our 4-week, project-driven bootcamp where you’ll build 
+          enterprise-level software, get 1:1 mentorship from Silicon Valley engineers and
+          hiring managers, and develop the enterprise skills that separate you from other 
+          CS graduates.
         </p>
       <!-- Hero text-->
       <p class="hero-text">
@@ -47,36 +103,17 @@
         <span class="highlight">Professional Mentor</span> +
         <span class="highlight">Recommendation Letter</span>
       </p>
-        <a href="#journey-step-1" class="cta-button">Start Your Journey Today</a>
+        <a href="#journey-step-1" class="cta-button">Start Today</a>
       </div>
 
       <!-- Image column -->
-      <div style="flex: 1 1 500px; text-align: center;">
+      <div class="mobile-hide" style="flex: 1 1 500px; text-align: center;">
         <img src="images/landing-visual.svg" alt="Students coding" style="max-width: 100%; border-radius: 12px; box-shadow: 0 14px 20px rgba(0, 0, 0, 0.1);" />
       </div>
 
     </div>
   </section>
-<!-- Navigation bar -->
-  <nav class="nav">
-<!-- Container for logos in nav -->
-  <div class="nav-logos">
-  <!-- Wrap Offerdeer logo in a link -->
-   <img src="images/offerdeer_logo.svg" alt="Offerdeer Logo" class="logo offerdeer-logo"/>
-    <p class="collaboration-x">x</p>
-    <img src="images/beshton_white_text_transparent_bg.png" alt="Beshton Software Logo" class="logo beshton-logo"/>
-</div>
-<!-- Navigation menu items -->
-    <div class="nav-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="session.html">2025 Programs</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="signup.html" class="get-started-link">Get Started</a></li>
-      </ul>
-    </div>
-  </nav>
-
+  
 
 <!-- General container for content sections -->
   <div class="container">
@@ -109,7 +146,7 @@
           </div>
         </div>
         <br>
-        <p style="font-size: 1.3rem; color: #333; margin-bottom: 1rem;">
+        <p class="mobile-large-text" style="font-size: 1.3rem; color: #333; margin-bottom: 1rem;">
           This is a hybrid program headquartered at a vibrant incubator space in the
           heart of Silicon Valley. <span style="color: teal;">In-person</span>, <span style="color: teal;">hybrid</span> and <span style="color: teal;">remote</span> options are available.
         </p>
@@ -171,7 +208,7 @@
             <p>Work directly with senior engineers who've been through 
               the hiring process hundreds of times. Get your resume torn apart 
               and rebuilt, practice technical interviews with people who actually
-               conduct them, and learn the unwritten rules of landing offers at top companies.</p>
+               conduct them, and learn the unwritten strategies of landing offers at top companies.</p>
         </div>
         
         <div class="subsection">
@@ -194,7 +231,7 @@
         </div>
         <br>
         <div style="text-align: center;">
-    <a href="session.html" class="cta-button">Ready to stand out? Apply Today</a>
+    <a href="signup.html" class="cta-button">Ready to stand out? Apply Today</a>
 </div>
       </div>
   </div>
@@ -399,6 +436,33 @@
         formContent.style.display = 'block';
     });
 </script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('mobileToggle');
+            const dropdown = document.getElementById('mobileDropdown');
+            
+            if (toggle && dropdown) {
+                // Toggle dropdown when button is clicked
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+                
+                // Close dropdown when clicking a link
+                dropdown.addEventListener('click', function() {
+                    dropdown.classList.remove('show');
+                });
+            }
+        });
+    </script>
 
 <!-- General container for content sections -->
   <!--
